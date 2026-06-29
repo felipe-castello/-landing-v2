@@ -2,7 +2,7 @@
 set -euo pipefail
 APP_DIR="/var/www/nexus-iot-energy-landing"
 mkdir -p "$APP_DIR"
-cp -r index.html styles.css script.js logo-nexus-iot-energy.jpg "$APP_DIR"/
+cp -r index.html styles.css script.js logo-nexus-iot-energy.jpg logo-nexus-transparente.png "$APP_DIR"/
 chown -R www-data:www-data "$APP_DIR"
 chmod -R 755 "$APP_DIR"
 systemctl reload nginx
