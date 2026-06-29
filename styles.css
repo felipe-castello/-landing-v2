@@ -230,21 +230,6 @@ button:focus-visible {
   }
 }
 
-.legacy-hero {
-  display: none;
-}
-
-.legacy-metrics {
-  display: none;
-}
-
-.legacy-solutions,
-.legacy-how,
-.legacy-cta,
-.legacy-footer {
-  display: none;
-}
-
 .faq-section {
   padding: 26px 38px 20px;
   color: #08111f;

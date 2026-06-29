@@ -1,41 +1,66 @@
-# Nexus IoT Energy Landing Page
+# Nexus IoT Energy Landing Page V2 Final
 
-Arquivos prontos para subir no GitHub e publicar na VPS.
+Landing final aprovada para producao do dominio:
 
-## Estrutura
+`https://www.nexusiotenergy.com.br`
 
-- `index.html` — página pública
-- `styles.css` — layout responsivo
-- `script.js` — menu mobile
-- `logo-nexus-iot-energy.jpg` — logo oficial
-- `deploy.sh` — script simples para copiar arquivos na VPS
-- `nginx-nexusiotenergy.conf` — exemplo de configuração Nginx
+Headline esperada:
 
-## Publicação sugerida
-
-Domínio público:
-
-`www.nexusiotenergy.com.br`
+`Reduza custos com energia e evite falhas criticas`
 
 Sistema FCX 5.2:
 
 `https://app.nexusiotenergy.com.br/login`
 
-## VPS
+## Arquivos principais
+
+- `index.html` - pagina publica final
+- `styles.css` - identidade visual dark/navy Nexus
+- `script.js` - menu mobile e accordion
+- `assets/nexus/` - logo oficial, dashboard e assets da landing
+- `favicon.svg`, `site.webmanifest`, `robots.txt`, `sitemap.xml` - SEO e PWA
+- `deploy.sh` - copia a landing para o DocumentRoot final
+- `nginx-nexusiotenergy.conf` - exemplo de bloco Nginx
+
+## DocumentRoot final
 
 ```bash
-cd /var/www/nexus-iot-energy-landing
-sudo git pull
+/var/www/nexusiotenergy
+```
+
+## Atualizacao se o DocumentRoot for um clone Git
+
+```bash
+cd /var/www/nexusiotenergy
+sudo git pull origin main
+sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-Se usar o script:
+## Atualizacao se o DocumentRoot nao for um clone Git
+
+Execute a partir da raiz deste repositorio na VPS:
 
 ```bash
 chmod +x deploy.sh
 sudo ./deploy.sh
+sudo nginx -t
+sudo systemctl reload nginx
 ```
 
-## Atenção
+O script copia `index.html`, `styles.css`, `script.js`, assets e arquivos SEO para `/var/www/nexusiotenergy`.
 
-Esta landing page não altera backend, autenticação ou app FCX 5.2.
+## Validacao
+
+```bash
+grep "Reduza custos com energia" /var/www/nexusiotenergy/index.html
+OLD_HEADLINE="Transforme dados operacionais em economia"
+grep "$OLD_HEADLINE real" /var/www/nexusiotenergy/index.html
+curl -L https://www.nexusiotenergy.com.br/ | grep "Reduza custos com energia"
+```
+
+O primeiro e o terceiro comandos devem retornar a headline final. O segundo nao deve retornar nada.
+
+## Escopo
+
+Esta landing page nao altera backend, autenticacao, APIs ou o app FCX 5.2.

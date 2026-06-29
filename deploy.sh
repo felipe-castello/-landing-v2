@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-APP_DIR="/var/www/nexus-iot-energy-landing"
+APP_DIR="/var/www/nexusiotenergy"
 mkdir -p "$APP_DIR"
 cp -r index.html styles.css script.js favicon.svg site.webmanifest robots.txt sitemap.xml logo-nexus-iot-energy.jpg logo-nexus-transparente.png assets "$APP_DIR"/
 chown -R www-data:www-data "$APP_DIR"
