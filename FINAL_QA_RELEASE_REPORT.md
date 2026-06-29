@@ -2,7 +2,11 @@
 
 Data: 2026-06-29
 
-Branch: `feature/landing-v2-approved`
+Branch de trabalho: `feature/landing-v2-approved`
+
+Commit: `97704b3 feat(landing): implement Nexus IoT Energy Landing Page V2 approved design`
+
+GitHub: branch `feature/landing-v2-approved` publicada e merge fast-forward aplicado em `main`.
 
 ## Escopo
 
@@ -89,19 +93,24 @@ Este projeto de landing e estatico e nao possui `package.json`.
 - Deploy incluindo novos assets e arquivos SEO.
 - Nginx com gzip e cache para assets.
 
-## Passos para publicacao
+## Status de publicacao
 
-1. Fazer push da branch `feature/landing-v2-approved`.
-2. Abrir PR no GitHub.
-3. Revisar diff e aprovar merge para `main`.
-4. Na VPS:
+- Branch `feature/landing-v2-approved`: publicada no GitHub.
+- Branch `main`: atualizada no GitHub com o commit `97704b3`.
+- Producao `https://www.nexusiotenergy.com.br/`: respondeu HTTP 200.
+- Producao ainda nao exibe a Hero V2 no momento da validacao; a VPS precisa executar pull/reload ou aguardar pipeline de deploy.
+
+## Passos para publicacao na VPS
+
+1. Na VPS:
    - acessar `/var/www/nexus-iot-energy-landing`
    - executar `git pull`
    - executar `sudo systemctl reload nginx`
-5. Validar producao em `https://www.nexusiotenergy.com.br/`.
-6. Executar Lighthouse em Chrome desktop/mobile.
-7. Validar manualmente Chrome, Edge, Firefox e Safari.
+2. Validar producao em `https://www.nexusiotenergy.com.br/`.
+3. Confirmar que a pagina contem `Reduza custos com energia`.
+4. Executar Lighthouse em Chrome desktop/mobile.
+5. Validar manualmente Chrome, Edge, Firefox e Safari.
 
 ## Observacao
 
-O navegador interno desta sessao bloqueou testes locais por `file://`, `localhost` e `127.0.0.1`. Por isso, validacoes visuais cross-browser e producao permanecem pendentes ate execucao em ambiente real.
+O navegador interno desta sessao bloqueou testes locais por `file://`, `localhost` e `127.0.0.1`. Por isso, validacoes visuais cross-browser permanecem pendentes ate execucao em ambiente real.
